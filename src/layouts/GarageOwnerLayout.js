@@ -99,46 +99,47 @@ const GarageOwnerLayout = () => {
   }
 
   return (
-    <>
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="#home">CAR SERVICE</NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              {getNavLinks(routes)}
-            </Nav>
-            <Nav navbar>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  {user.name}
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem href="/garage-owner/profile">
-                    My Profile
-                  </DropdownItem>
-                  <DropdownItem href="/garage-owner/change-password">
-                    Change Password
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={logoutButtonHandler}>
-                    Logout
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-      <Container fluid>
-        <Switch>
-          {getRoutes(routes)}
-          <Route path="/garage-owner/profile" component={Profile} />
-          <Route path="/garage-owner/change-password" component={ChangePassword} />
-          <Redirect from="/garage-owner" to="/garage-owner/bookings" />
-        </Switch>
-      </Container>
-    </>
+    user.user_type === "GARAGE_OWNER" ?
+      <>
+        <div>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="#home" onClick={e => history.push("/garage-owner")}>CAR SERVICE</NavbarBrand>
+            <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar>
+              <Nav className="mr-auto" navbar>
+                {getNavLinks(routes)}
+              </Nav>
+              <Nav navbar>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    {user.name}
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem href="#profile" onClick={e => history.push("/garage-owner/profile")}>
+                      My Profile
+                </DropdownItem>
+                    <DropdownItem href="#change-password" onClick={e => history.push("/garage-owner/change-password")}>
+                      Change Password
+                </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={logoutButtonHandler}>
+                      Logout
+                </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+        <Container fluid>
+          <Switch>
+            {getRoutes(routes)}
+            <Route path="/garage-owner/profile" component={Profile} />
+            <Route path="/garage-owner/change-password" component={ChangePassword} />
+            <Redirect from="/garage-owner" to="/garage-owner/bookings" />
+          </Switch>
+        </Container>
+      </> : <Redirect to="/auth" />
   )
 }
 

@@ -69,46 +69,47 @@ const AdminLayout = () => {
   }
 
   return (
-    <>
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="#home">CAR SERVICE</NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              {getNavLinks(routes)}
-            </Nav>
-            <Nav navbar>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  {user.name}
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem href="/admin/profile">
-                    My Profile
+    user.user_type === "ADMIN" ?
+      <>
+        <div>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="#home" onClick={e => history.push("/admin")}>CAR SERVICE</NavbarBrand>
+            <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar>
+              <Nav className="mr-auto" navbar>
+                {getNavLinks(routes)}
+              </Nav>
+              <Nav navbar>
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    {user.name}
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem href="#profile" onClick={e => history.push("/admin/profile")}>
+                      My Profile
                   </DropdownItem>
-                  <DropdownItem href="/admin/change-password">
-                    Change Password
+                    <DropdownItem href="#change-password" onClick={e => history.push("/admin/change-password")}>
+                      Change Password
                   </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={logoutButtonHandler}>
-                    Logout
+                    <DropdownItem divider />
+                    <DropdownItem onClick={logoutButtonHandler}>
+                      Logout
                   </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-      <Container fluid>
-        <Switch>
-          {getRoutes(routes)}
-          <Route path="/admin/profile" component={Profile} />
-          <Route path="/admin/change-password" component={ChangePassword} />
-          <Redirect from="/admin" to="/admin/dashboard" />
-        </Switch>
-      </Container>
-    </>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </div>
+        <Container fluid>
+          <Switch>
+            {getRoutes(routes)}
+            <Route path="/admin/profile" component={Profile} />
+            <Route path="/admin/change-password" component={ChangePassword} />
+            <Redirect from="/admin" to="/admin/dashboard" />
+          </Switch>
+        </Container>
+      </> : <Redirect to="/auth" />
   );
 }
 
