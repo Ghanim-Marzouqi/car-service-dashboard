@@ -10,6 +10,10 @@ const GET_OWNER_GARAGES_URL = "/a/get-user-garages";
 const GET_ALL_BOOKINGS_URL = "/b/bookings";
 const GET_ALL_REGIONS_URL = "/general/regions";
 const GET_ALL_WILLAYATS_URL = "/general/willayats";
+const ADD_NEW_SERVICE_URL = "/s/service";
+const DELETE_SERVICE_URL = "/s/service";
+const GET_SERVICE_BY_ID_URL = "/s/service";
+const UPDATE_SERVICE_URL = "/s/service";
 
 export {
     LOGIN_URL,
@@ -23,5 +27,9 @@ export {
     GET_OWNER_GARAGES_URL,
     GET_ALL_BOOKINGS_URL,
     GET_ALL_REGIONS_URL,
-    GET_ALL_WILLAYATS_URL
+    GET_ALL_WILLAYATS_URL,
+    ADD_NEW_SERVICE_URL,
+    DELETE_SERVICE_URL,
+    GET_SERVICE_BY_ID_URL,
+    UPDATE_SERVICE_URL
 }

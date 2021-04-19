@@ -47,7 +47,7 @@ const ChangePassword = () => {
   return (
     <>
       <h1>Change Password</h1>
-      <Form className="align-self-center w-50 mt-5">
+      <Form className="align-self-center mt-5">
         {alert.visible ?
           <Alert color={alert.color}>
             {alert.message}
