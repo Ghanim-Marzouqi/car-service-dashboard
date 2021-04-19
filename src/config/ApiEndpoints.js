@@ -14,6 +14,7 @@ const ADD_NEW_SERVICE_URL = "/s/service";
 const DELETE_SERVICE_URL = "/s/service";
 const GET_SERVICE_BY_ID_URL = "/s/service";
 const UPDATE_SERVICE_URL = "/s/service";
+const CREATE_USER_URL = "/u/user";
 
 export {
     LOGIN_URL,
@@ -31,5 +32,6 @@ export {
     ADD_NEW_SERVICE_URL,
     DELETE_SERVICE_URL,
     GET_SERVICE_BY_ID_URL,
-    UPDATE_SERVICE_URL
+    UPDATE_SERVICE_URL,
+    CREATE_USER_URL
 }

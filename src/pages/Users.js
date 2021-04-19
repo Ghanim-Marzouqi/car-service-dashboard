@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Table } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,7 @@ import { faPlus, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { getAllUsers } from "../services";
 
 const Users = () => {
+  const history = useHistory();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ const Users = () => {
     <>
       <div className="d-flex flex-row justify-content-between">
         <h1>Users</h1>
-        <Button className="my-2" color="primary" size="sm">
+        <Button className="my-2" color="primary" size="sm" onClick={e => history.push("/admin/edit-user/0")}>
           <FontAwesomeIcon icon={faPlus} />{" "} Add New User
         </Button>
       </div>

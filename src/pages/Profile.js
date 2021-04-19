@@ -116,7 +116,7 @@ const Profile = () => {
           <Input type="select" name="region" value={form.region_id} onChange={e => regionChangeHandler(e, e.target.value)}>
             <option>- Select Region -</option>
             {regions.length > 0 ?
-              regions.map((region, i) => <option key={i} value={region.id} selected={region.id === form.region_id ? true : false}>{region.name}</option>) : null
+              regions.map((region, i) => <option key={i} value={region.id}>{region.name}</option>) : null
             }
           </Input>
         </FormGroup>
@@ -125,7 +125,7 @@ const Profile = () => {
           <Input type="select" name="willayat" value={form.willayat_id} onChange={e => setForm({ ...form, willayat_id: e.target.value })}>
             <option>- Select Willayat -</option>
             {willayats.length > 0 ?
-              willayats.map((willayat, i) => <option key={i} value={willayat.id} selected={willayat.id === form.willayat_id ? true : false}>{willayat.name}</option>) : null
+              willayats.map((willayat, i) => <option key={i} value={willayat.id}>{willayat.name}</option>) : null
             }
           </Input>
         </FormGroup>
