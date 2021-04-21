@@ -20,6 +20,7 @@ import { adminRoutes as routes } from "../routes/Routs";
 import Profile from "../pages/Profile";
 import ChangePassword from "../pages/ChangePassword";
 import EditService from "../pages/EditService";
+import EditGarage from "../pages/EditGarage";
 import EditUser from "../pages/EditUser";
 
 import { getLoggedInUserState, loggedInUserState } from "../store";
@@ -109,6 +110,7 @@ const AdminLayout = () => {
             <Route path="/admin/profile" component={Profile} />
             <Route path="/admin/change-password" component={ChangePassword} />
             <Route path="/admin/edit-service/:id" component={EditService} />
+            <Route path="/admin/edit-garage/:id" component={EditGarage} />
             <Route path="/admin/edit-user/:id" component={EditUser} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>

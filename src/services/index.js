@@ -10,6 +10,6 @@ export { login, register, updateProfile, changePassword, getOwnerGarage } from "
 export { getStatistics, getRegions, getWillayats } from "./GeneralService";
 export { getAllServices, creareService, deleteService, getServiceById, updateService } from "./ServicesService";
 export { getAllUsers, createUser } from "./UsersService";
-export { getAllGarages } from "./GaragesService";
+export { getAllGarages, getGarageOwners, createGarage, getGarageById, updateGarage, deleteGarage } from "./GaragesService";
 export { getAllBookings } from "./BookingsService";
 export default http;

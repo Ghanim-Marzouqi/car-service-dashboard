@@ -15,6 +15,11 @@ const DELETE_SERVICE_URL = "/s/service";
 const GET_SERVICE_BY_ID_URL = "/s/service";
 const UPDATE_SERVICE_URL = "/s/service";
 const CREATE_USER_URL = "/u/user";
+const GET_GARAGE_OWNERS_URL = "/g/garage-owners";
+const ADD_NEW_GARAGE_URL = "/g/garage";
+const GET_GARAGE_BY_ID_URL = "/g/garage";
+const UPDATE_GARAGE_URL = "/g/garage";
+const DELETE_GARAGE_URL = "/g/garage";
 
 export {
     LOGIN_URL,
@@ -33,5 +38,10 @@ export {
     DELETE_SERVICE_URL,
     GET_SERVICE_BY_ID_URL,
     UPDATE_SERVICE_URL,
-    CREATE_USER_URL
+    CREATE_USER_URL,
+    GET_GARAGE_OWNERS_URL,
+    ADD_NEW_GARAGE_URL,
+    GET_GARAGE_BY_ID_URL,
+    UPDATE_GARAGE_URL,
+    DELETE_GARAGE_URL
 }
