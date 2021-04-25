@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-import { getRegions, getWillayats, createUser } from "../services";
+import { getRegions, getWillayats, createUser, getUserById, updateUser } from "../services";
 
 const EditUser = () => {
   const history = useHistory();
@@ -28,12 +28,27 @@ const EditUser = () => {
   });
 
   useEffect(() => {
+    const fetchUser = async (payload) => {
+      const response = await getUserById(payload);
+
+      if (response !== null) {
+        if (response.status === "success") {
+          fetchAllWillayatsByRegionId(response.data.region_id);
+          setForm(response.data);
+        } else {
+          setAlert({ visible: true, color: "danger", message: response.message });
+        }
+      } else {
+        setAlert({ visible: true, color: "danger", message: "Server Error" });
+      }
+    }
+
     if (typeof id !== "undefined") {
       if (id === "0") {
         setTitle("Add");
       } else {
         setTitle("Edit");
-        // fetchService({ id });
+        fetchUser(id);
       }
     } else {
       history.goBack();
@@ -53,6 +68,8 @@ const EditUser = () => {
 
     fetchAllRegions();
   }, []);
+
+
 
   const regionChangeHandler = async (e, regionId) => {
     if (regionId) {
@@ -142,7 +159,17 @@ const EditUser = () => {
         setAlert({ visible: true, color: "danger", message: "Server Error" });
       }
     } else {
-      // TODO: handle update user
+      const response = await updateUser(form);
+
+      if (response !== null) {
+        if (response.status === "success") {
+          setAlert({ visible: true, color: "success", message: response.message });
+        } else {
+          setAlert({ visible: true, color: "danger", message: response.message });
+        }
+      } else {
+        setAlert({ visible: true, color: "danger", message: "Server Error" });
+      }
     }
   }
 

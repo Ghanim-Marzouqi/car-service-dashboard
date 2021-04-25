@@ -20,6 +20,10 @@ const ADD_NEW_GARAGE_URL = "/g/garage";
 const GET_GARAGE_BY_ID_URL = "/g/garage";
 const UPDATE_GARAGE_URL = "/g/garage";
 const DELETE_GARAGE_URL = "/g/garage";
+const DELETE_USER_URL = "/u/user";
+const GET_USER_BY_ID_URL = "/u/user";
+const UPDATE_USER_URL = "/u/user";
+const CONFIRM_BOOKING_URL = "b/booking";
 
 export {
     LOGIN_URL,
@@ -43,5 +47,9 @@ export {
     ADD_NEW_GARAGE_URL,
     GET_GARAGE_BY_ID_URL,
     UPDATE_GARAGE_URL,
-    DELETE_GARAGE_URL
+    DELETE_GARAGE_URL,
+    DELETE_USER_URL,
+    GET_USER_BY_ID_URL,
+    UPDATE_USER_URL,
+    CONFIRM_BOOKING_URL
 }
