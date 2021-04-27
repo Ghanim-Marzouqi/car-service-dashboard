@@ -69,8 +69,6 @@ const EditUser = () => {
     fetchAllRegions();
   }, []);
 
-
-
   const regionChangeHandler = async (e, regionId) => {
     if (regionId) {
       setForm({ ...form, region_id: regionId });
