@@ -24,6 +24,7 @@ const DELETE_USER_URL = "/u/user";
 const GET_USER_BY_ID_URL = "/u/user";
 const UPDATE_USER_URL = "/u/user";
 const CONFIRM_BOOKING_URL = "b/booking";
+const SEND_EMAIL_URL = "/general/send-email";
 
 export {
     LOGIN_URL,
@@ -51,5 +52,6 @@ export {
     DELETE_USER_URL,
     GET_USER_BY_ID_URL,
     UPDATE_USER_URL,
-    CONFIRM_BOOKING_URL
+    CONFIRM_BOOKING_URL,
+    SEND_EMAIL_URL
 }

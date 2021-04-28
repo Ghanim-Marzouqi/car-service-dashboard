@@ -1,5 +1,5 @@
 import http from ".";
-import { STATISTICS_URL, GET_ALL_REGIONS_URL, GET_ALL_WILLAYATS_URL } from "../config";
+import { STATISTICS_URL, GET_ALL_REGIONS_URL, GET_ALL_WILLAYATS_URL, SEND_EMAIL_URL } from "../config";
 
 const getStatistics = async () => {
   try {
@@ -31,4 +31,14 @@ const getWillayats = async (payload) => {
   }
 }
 
-export { getStatistics, getRegions, getWillayats }
+const sendEmail = async (payload) => {
+  try {
+    const response = await http.post(SEND_EMAIL_URL, payload);
+    return response.data;
+  } catch (error) {
+    console.log("error", error);
+    return null;
+  }
+}
+
+export { getStatistics, getRegions, getWillayats, sendEmail }

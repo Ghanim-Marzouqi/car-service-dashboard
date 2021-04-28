@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useToasts } from 'react-toast-notifications';
 
-import { getAllBookings, confirmBooking } from "../services";
+import { getAllBookings, confirmBooking, sendEmail } from "../services";
 import { getOwnerGaragesState } from "../store";
 
 const Bookings = () => {
@@ -39,6 +39,11 @@ const Bookings = () => {
     if (response !== null) {
       if (response.status === "success") {
         showTaostMessage(response.message, "success");
+        sendEmail({
+          email: payload.email,
+          subject: "Booking Confirmed",
+          message: "Your requested booking has been confirmed"
+        });
         await fetchAllBookings(garageIds);
       } else {
         showTaostMessage(response.message, "error");
@@ -76,7 +81,7 @@ const Bookings = () => {
                 <td className="text-right">
                   {booking.is_confirmed === 0 ?
                     <>
-                      <Button className="mr-2" color="info" size="sm" onClick={e => updateBooking({ id: booking.id, is_confirmed: 1, is_paid: booking.is_paid })}>
+                      <Button className="mr-2" color="info" size="sm" onClick={e => updateBooking({ id: booking.id, is_confirmed: 1, is_paid: booking.is_paid, email: booking.customer_email })}>
                         <FontAwesomeIcon icon={faCheck} />
                       </Button>
                       <Button color="danger" size="sm" onClick={e => { }}>

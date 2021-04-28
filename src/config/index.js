@@ -24,5 +24,6 @@ export {
     DELETE_USER_URL,
     GET_USER_BY_ID_URL,
     UPDATE_USER_URL,
-    CONFIRM_BOOKING_URL
+    CONFIRM_BOOKING_URL,
+    SEND_EMAIL_URL
 } from "./ApiEndpoints";
