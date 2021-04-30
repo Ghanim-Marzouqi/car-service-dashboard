@@ -2,22 +2,35 @@ import React, { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { Button, Table } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useToasts } from 'react-toast-notifications';
 
 import { getAllBookings, confirmBooking, sendEmail } from "../services";
-import { getOwnerGaragesState } from "../store";
+import { getGarageIdsState } from "../store";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const { addToast, removeAllToasts } = useToasts();
-  const garages = useRecoilValue(getOwnerGaragesState);
-  const garageIds = garages.map(g => g.id);
+  const garageIds = useRecoilValue(getGarageIdsState);
 
   useEffect(() => {
     removeAllToasts();
     fetchAllBookings(garageIds);
   }, [garageIds, removeAllToasts]);
+
+  const getBookingStatus = (status) => {
+    if (status) {
+      if (status === "P") {
+        return "Pending";
+      } else if (status === "C") {
+        return "Confirmed";
+      } else if (status === "R") {
+        return "Rejected";
+      }
+    } else {
+      return "Unknown";
+    }
+  }
 
   const fetchAllBookings = async (garageIds) => {
     const response = await getAllBookings({ garageIds });
@@ -39,11 +52,21 @@ const Bookings = () => {
     if (response !== null) {
       if (response.status === "success") {
         showTaostMessage(response.message, "success");
-        sendEmail({
-          email: payload.email,
-          subject: "Booking Confirmed",
-          message: "Your requested booking has been confirmed"
-        });
+
+        if (payload.status === "C") {
+          sendEmail({
+            email: payload.email,
+            subject: "Booking Confirmed",
+            message: `Your order (reference number: ${response.data.order_id} - Date: ${response.data.booking_date.split(".")[0].replace("T", " ")}) has been confirmed`
+          });
+        } else {
+          sendEmail({
+            email: payload.email,
+            subject: "Booking Rejected",
+            message: `Your order (reference number: ${response.data.order_id} - Date: ${response.data.booking_date.split(".")[0].replace("T", " ")}) has been rejected`
+          });
+        }
+
         await fetchAllBookings(garageIds);
       } else {
         showTaostMessage(response.message, "error");
@@ -64,9 +87,8 @@ const Bookings = () => {
               <th>Service</th>
               <th>Garage</th>
               <th>Booking Date</th>
-              <th>Is Confirmed</th>
-              <th>Is Paid</th>
-              <th className="text-right">Manage</th>
+              <th>Booking Status</th>
+              <th className="text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -76,16 +98,15 @@ const Bookings = () => {
                 <td>{booking.service_name}</td>
                 <td>{booking.garage_name}</td>
                 <td>{`${booking.booking_date}`.split(".")[0].replace("T", " ")}</td>
-                <td>{booking.is_confirmed === 0 ? "Pending" : "Confirmed"}</td>
-                <td>{booking.is_paid === 0 ? "Pending" : "Paid"}</td>
+                <td>{getBookingStatus(booking.status)}</td>
                 <td className="text-right">
-                  {booking.is_confirmed === 0 ?
+                  {booking.status === "P" ?
                     <>
-                      <Button className="mr-2" color="info" size="sm" onClick={e => updateBooking({ id: booking.id, is_confirmed: 1, is_paid: booking.is_paid, email: booking.customer_email })}>
+                      <Button className="mr-2" color="info" size="sm" onClick={e => updateBooking({ id: booking.id, status: "C", email: booking.customer_email })}>
                         <FontAwesomeIcon icon={faCheck} />
                       </Button>
-                      <Button color="danger" size="sm" onClick={e => { }}>
-                        <FontAwesomeIcon icon={faTrash} />
+                      <Button color="danger" size="sm" onClick={e => updateBooking({ id: booking.id, status: "R", email: booking.customer_email })}>
+                        <FontAwesomeIcon icon={faTimes} />
                       </Button>
                     </> : null}
                 </td>

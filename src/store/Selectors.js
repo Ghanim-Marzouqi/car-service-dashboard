@@ -15,4 +15,13 @@ const getOwnerGaragesState = selector({
   }
 });
 
-export { getLoggedInUserState, getOwnerGaragesState }
+const getGarageIdsState = selector({
+  key: "getGarageIdsState",
+  get: ({ get }) => {
+    const garages = get(ownerGaragesState);
+    const garageIds = garages.map(g => g.id);
+    return garageIds;
+  }
+})
+
+export { getLoggedInUserState, getOwnerGaragesState, getGarageIdsState }
