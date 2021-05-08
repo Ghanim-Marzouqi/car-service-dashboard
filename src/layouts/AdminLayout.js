@@ -15,7 +15,7 @@ import {
   DropdownItem
 } from "reactstrap";
 
-import { adminRoutes as routes } from "../routes/Routs";
+import { adminRoutes as routes } from "../routes/Routes";
 
 import Profile from "../pages/Profile";
 import ChangePassword from "../pages/ChangePassword";

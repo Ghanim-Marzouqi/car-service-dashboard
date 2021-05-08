@@ -25,5 +25,6 @@ export {
     GET_USER_BY_ID_URL,
     UPDATE_USER_URL,
     CONFIRM_BOOKING_URL,
-    SEND_EMAIL_URL
+    SEND_EMAIL_URL,
+    GET_GARAGE_OWNER_GARAGES_URL
 } from "./ApiEndpoints";

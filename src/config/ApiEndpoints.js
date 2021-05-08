@@ -25,6 +25,7 @@ const GET_USER_BY_ID_URL = "/u/user";
 const UPDATE_USER_URL = "/u/user";
 const CONFIRM_BOOKING_URL = "b/booking";
 const SEND_EMAIL_URL = "/general/send-email";
+const GET_GARAGE_OWNER_GARAGES_URL = "/g/owner-garages";
 
 export {
     LOGIN_URL,
@@ -53,5 +54,6 @@ export {
     GET_USER_BY_ID_URL,
     UPDATE_USER_URL,
     CONFIRM_BOOKING_URL,
-    SEND_EMAIL_URL
+    SEND_EMAIL_URL,
+    GET_GARAGE_OWNER_GARAGES_URL
 }

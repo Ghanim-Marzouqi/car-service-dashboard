@@ -5,7 +5,8 @@ import {
   ADD_NEW_GARAGE_URL,
   GET_GARAGE_BY_ID_URL,
   UPDATE_GARAGE_URL,
-  DELETE_GARAGE_URL
+  DELETE_GARAGE_URL,
+  GET_GARAGE_OWNER_GARAGES_URL
 } from "../config";
 
 const getAllGarages = async () => {
@@ -68,4 +69,14 @@ const deleteGarage = async (payload) => {
   }
 }
 
-export { getAllGarages, getGarageOwners, createGarage, getGarageById, updateGarage, deleteGarage }
+const getGarageOwnerGarages = async (payload) => {
+  try {
+    const response = await http.get(`${GET_GARAGE_OWNER_GARAGES_URL}/${payload}`);
+    return response.data;
+  } catch (error) {
+    console.log("error", error);
+    return null;
+  }
+}
+
+export { getAllGarages, getGarageOwners, createGarage, getGarageById, updateGarage, deleteGarage, getGarageOwnerGarages }

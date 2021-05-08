@@ -90,6 +90,14 @@ const Login = () => {
         >
           Sign In
         </Button>
+        <Button
+          className="mt-4"
+          block
+          color="outline-primary"
+          onClick={() => history.push("/auth/registration")}
+        >
+          Sign Up
+        </Button>
       </Form>
     </div>
   );

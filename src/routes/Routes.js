@@ -1,5 +1,6 @@
 // auth pages
 import Login from "../pages/Login";
+import Registration from "../pages/Registration";
 
 // admin pages
 import Dashboard from "../pages/Dashboard";
@@ -9,6 +10,7 @@ import Users from "../pages/Users";
 
 // garage owner pages
 import Bookings from "../pages/Bookings";
+import OwnerGarages from "../pages/OwnerGarages";
 
 // fontawesome icons
 import {
@@ -27,6 +29,12 @@ const authRoutes = [
     icon: faSignInAlt,
     layout: "/auth",
   },
+  {
+    path: "/registration",
+    component: Registration,
+    icon: faSignInAlt,
+    layout: "/auth"
+  }
 ];
 
 const adminRoutes = [
@@ -57,6 +65,12 @@ const adminRoutes = [
 ];
 
 const garageOwnerRoutes = [
+  {
+    path: "/garages",
+    component: OwnerGarages,
+    icon: faFileContract,
+    layout: "/garage-owner",
+  },
   {
     path: "/bookings",
     component: Bookings,

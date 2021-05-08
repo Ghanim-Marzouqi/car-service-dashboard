@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Container } from "reactstrap";
 
-import { authRoutes as routes } from "../routes/Routs";
+import { authRoutes as routes } from "../routes/Routes";
 
 const AuthLayout = () => {
 
