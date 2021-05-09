@@ -62,7 +62,6 @@ const Services = () => {
             <tr>
               <th>Name</th>
               <th>Description</th>
-              <th>Price</th>
               <th className="text-right">Manage</th>
             </tr>
           </thead>
@@ -71,7 +70,6 @@ const Services = () => {
               <tr key={i}>
                 <td>{service.name}</td>
                 <td>{service.description}</td>
-                <td>{service.price} O.R</td>
                 <td className="text-right">
                   <Button className="mr-2" color="success" size="sm" onClick={e => history.push(`/admin/edit-service/${service.id}`)}>
                     <FontAwesomeIcon icon={faEdit} />

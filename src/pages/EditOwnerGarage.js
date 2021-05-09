@@ -19,6 +19,7 @@ const EditOwnerGarage = () => {
     name: "",
     description: "",
     service_id: "",
+    service_price: "",
     owner_id: "",
     region_id: "",
     willayat_id: ""
@@ -153,6 +154,10 @@ const EditOwnerGarage = () => {
               services.map((service, i) => <option key={i} value={service.id}>{service.name}</option>) : null
             }
           </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="name">Service Price</Label>
+          <Input placeholder="Please Enter Service Price" value={form.service_price} onChange={e => setForm({ ...form, service_price: e.target.value })} />
         </FormGroup>
         <FormGroup>
           <Label for="service">Owner</Label>

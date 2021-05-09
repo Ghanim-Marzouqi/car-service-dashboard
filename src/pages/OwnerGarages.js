@@ -67,6 +67,7 @@ const OwnerGarages = () => {
             <tr>
               <th>Name</th>
               <th>Service</th>
+              <th>Service Price</th>
               <th>Owner</th>
               <th>Location</th>
               <th className="text-right">Manage</th>
@@ -77,6 +78,7 @@ const OwnerGarages = () => {
               <tr key={i}>
                 <td>{garage.name}</td>
                 <td>{garage.service_name}</td>
+                <td>{garage.service_price} O.R</td>
                 <td>{garage.owner_name}</td>
                 <td>{garage.region_name} / {garage.willayat_name}</td>
                 <td className="text-right">

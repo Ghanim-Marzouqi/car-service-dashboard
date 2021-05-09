@@ -11,8 +11,7 @@ const EditService = () => {
   const [form, setForm] = useState({
     id: "0",
     name: "",
-    description: "",
-    price: 0
+    description: ""
   });
   const [alert, setAlert] = useState({
     visible: false,
@@ -93,10 +92,6 @@ const EditService = () => {
         <FormGroup>
           <Label for="description">Description</Label>
           <Input placeholder="Please Enter Description" value={form.description} onChange={e => setForm({ ...form, description: e.target.value })} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="price">Price</Label>
-          <Input type="number" placeholder="Please Enter Price" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
         </FormGroup>
         <Button
           className="mt-4"
